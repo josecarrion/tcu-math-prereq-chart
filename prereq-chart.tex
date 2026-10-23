@@ -4,15 +4,17 @@
 \usepackage[hidelinks]{hyperref}
 
 % \legendx, \legendy: legend offset from the graph's lower-left corner, chosen by
-% place-legend.py. To pin the legend by hand, replace this line with two \newcommand lines.
-\input{build/prereq-legend-pos.tex}
+% place-legend.py. Without that file, the legend goes at the 2026-27 spot.
+\InputIfFileExists{build/prereq-legend-pos.tex}{}{%
+  \newcommand{\legendx}{0bp}\newcommand{\legendy}{708bp}}
 
 \begin{document}
 \begin{tikzpicture}[inner sep=0pt]
   \node[anchor=south west] (graph) at (0,0) {\includegraphics{build/prereq-graph.pdf}};
   \node[anchor=south west] at ([xshift=\legendx,yshift=\legendy]graph.south west)
     {\includegraphics{build/prereq-legend.pdf}};
-  % pdflatex drops the links of an included PDF; make-links.py recreates them
-  \input{build/prereq-links.tex}
+  % pdflatex drops the links of an included PDF; make-links.py recreates them.
+  % Without that file, the chart has no links.
+  \InputIfFileExists{build/prereq-links.tex}{}{}
 \end{tikzpicture}
 \end{document}
