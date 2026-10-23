@@ -1,0 +1,18 @@
+% Prerequisite chart: the dot graph with the legend overlaid and clickable
+% course boxes. Built by build.sh; edit prereq-graph.gv, not this file.
+\documentclass[tikz]{standalone}
+\usepackage[hidelinks]{hyperref}
+
+% \legendx, \legendy: legend offset from the graph's lower-left corner, chosen by
+% place-legend.py. To pin the legend by hand, replace this line with two \newcommand lines.
+\input{build/prereq-legend-pos.tex}
+
+\begin{document}
+\begin{tikzpicture}[inner sep=0pt]
+  \node[anchor=south west] (graph) at (0,0) {\includegraphics{build/prereq-graph.pdf}};
+  \node[anchor=south west] at ([xshift=\legendx,yshift=\legendy]graph.south west)
+    {\includegraphics{build/prereq-legend.pdf}};
+  % pdflatex drops the links of an included PDF; make-links.py recreates them
+  \input{build/prereq-links.tex}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,138 @@
+// TCU Mathematics course prerequisites. Edit this file, then run ./build.sh.
+//
+// One box per course (id = department letter + number), one column per catalog level.
+// Solid arrow: required. Dashed arrows into a course: one of them suffices. White outlined
+// boxes are requirements that are not a single course; they have no link.
+// Numbers and URLs follow the 2026-27 undergraduate catalog
+// (undergraduate.catalog.tcu.edu/courses/<7-digit id>).
+// Left off: courses no longer offered (Higher Geometry, Game Theory, Fourier Analysis,
+// Dynamical Systems), grade minimums, the MOS Excel test (Interest Theory, Actuarial Math),
+// and courses with no course prerequisites (MATH 30000, 40000, 40801, etc.).
+
+digraph G {
+graph [fontname="DejaVu Sans", splines=ortho, ranksep=1.3, nodesep=0.32, labeljust="l", labelloc="t",
+       label=<<FONT POINT-SIZE="24">TCU Mathematics Course Prerequisites</FONT><BR ALIGN="LEFT"/><FONT POINT-SIZE="13" COLOR="#8a8a8a">2026–27 catalog</FONT><BR ALIGN="LEFT"/><BR/>>];
+node [shape=box, fontname="DejaVu Sans", style=filled, color="#e6e6e6", fontcolor="#222222",
+      fixedsize=true, width=2, height=0.6, fontsize=14];
+edge [arrowsize=.5, color="#a3a3a3", penwidth=1];
+rankdir=LR;
+
+// nodesep 0.32: below about 0.30, dot packs parallel arrows from different courses 2.5pt apart.
+// Course numbers are 11pt #5e5e5e: 5.2:1 contrast on the gray box.
+// Colors, removed 2026-10-22 (see Archive/prereq-chart-colors-snapshot.pdf), colorblind-safe:
+// Linear Algebra #3b6fb6 (box #e4ebf5), Calculus III #cc5a2a (box #f8e8e1), Intro. Math. Proof
+// #2e8b63 (box #e2efe9), spare #a3508f (box #f2e6ef). To restore one, add color="<box>" to the
+// course and edge [color="<hue>"] to its arrow group below.
+
+// Requirements that are not a single course
+placement   [label=<Placement test<BR/>or exam score>, color="#b0b0b0", fillcolor="#ffffff"];
+programming [label=<Programming<BR/>course>, color="#b0b0b0", fillcolor="#ffffff"];
+
+// 10000 level
+m10054 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 10054</FONT><BR/>Precalc. with Trig.>, URL="https://undergraduate.catalog.tcu.edu/courses/0081181"];
+m10273 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 10273</FONT><BR/>Applied Precalculus>, URL="https://undergraduate.catalog.tcu.edu/courses/0080161"];
+m10283 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 10283</FONT><BR/>Applied Calculus>, URL="https://undergraduate.catalog.tcu.edu/courses/0025151"];
+m10524 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 10524</FONT><BR/>Calculus I>, URL="https://undergraduate.catalog.tcu.edu/courses/0025161"];
+// 20000 level
+m20123 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 20123</FONT><BR/>Discrete Math I>, URL="https://undergraduate.catalog.tcu.edu/courses/0025101"];
+m20524 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 20524</FONT><BR/>Calculus II>, URL="https://undergraduate.catalog.tcu.edu/courses/0025211"];
+c20803 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">COSC 20803</FONT><BR/>Data Structures>, URL="https://undergraduate.catalog.tcu.edu/courses/0012551"];
+// 30000 level
+m30053 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 30053</FONT><BR/>Intro. Math. Proof>, URL="https://undergraduate.catalog.tcu.edu/courses/0096731"];
+m30103 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 30103</FONT><BR/>Intro. Data Sci.>, URL="https://undergraduate.catalog.tcu.edu/courses/0101442"];
+m30123 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 30123</FONT><BR/>Discrete Math II>, URL="https://undergraduate.catalog.tcu.edu/courses/0025111"];
+m30224 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 30224</FONT><BR/>Linear Algebra>, URL="https://undergraduate.catalog.tcu.edu/courses/0025351"];
+m30524 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 30524</FONT><BR/>Calculus III>, URL="https://undergraduate.catalog.tcu.edu/courses/0025361"];
+m30603 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 30603</FONT><BR/>Interest Theory>, URL="https://undergraduate.catalog.tcu.edu/courses/0072921"];
+m30613 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 30613</FONT><BR/>Diff. Eq.>, URL="https://undergraduate.catalog.tcu.edu/courses/0025391"];
+m30623 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 30623</FONT><BR/>Interest Theory II>, URL="https://undergraduate.catalog.tcu.edu/courses/0081171"];
+m30803 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 30803</FONT><BR/>Probability>, URL="https://undergraduate.catalog.tcu.edu/courses/0025411"];
+m30853 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 30853</FONT><BR/>Statistics>, URL="https://undergraduate.catalog.tcu.edu/courses/0025421"];
+// 40000 level
+m40103 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 40103</FONT><BR/>Graph Theory>, URL="https://undergraduate.catalog.tcu.edu/courses/0096741"];
+m40223 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 40223</FONT><BR/>Appl. Linear Alg.>, URL="https://undergraduate.catalog.tcu.edu/courses/0096751"];
+m40313 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 40313</FONT><BR/>Topology>, URL="https://undergraduate.catalog.tcu.edu/courses/0025491"];
+m40603 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 40603</FONT><BR/>Actuarial Math>, URL="https://undergraduate.catalog.tcu.edu/courses/0072931"];
+m40663 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 40663</FONT><BR/>Numerical Analysis>, URL="https://undergraduate.catalog.tcu.edu/courses/0070061"];
+m40853 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 40853</FONT><BR/>Regr./Time Series>, URL="https://undergraduate.catalog.tcu.edu/courses/0101311"];
+m40883 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 40883</FONT><BR/>Predictive Modeling>, URL="https://undergraduate.catalog.tcu.edu/courses/0101931"];
+// 50000 level
+m50073 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 50073</FONT><BR/>History of Math>, URL="https://undergraduate.catalog.tcu.edu/courses/0069551"];
+m50253 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 50253</FONT><BR/>Abstract Algebra I>, URL="https://undergraduate.catalog.tcu.edu/courses/0025631"];
+m50323 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 50323</FONT><BR/>Diff. Geometry>, URL="https://undergraduate.catalog.tcu.edu/courses/0025651"];
+m50403 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 50403</FONT><BR/>Complex Analysis>, URL="https://undergraduate.catalog.tcu.edu/courses/0025671"];
+m50503 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 50503</FONT><BR/>Real Analysis I>, URL="https://undergraduate.catalog.tcu.edu/courses/0025681"];
+m50613 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 50613</FONT><BR/>Partial Diff. Eq.>, URL="https://undergraduate.catalog.tcu.edu/courses/0025701"];
+m50703 [label=<<FONT POINT-SIZE="11" COLOR="#5e5e5e">MATH 50703</FONT><BR/>Number Theory>, URL="https://undergraduate.catalog.tcu.edu/courses/0025731"];
+
+// One column per catalog level; the 10000 level takes two (precalculus, then calculus).
+// The programming course sits with the 20000 level (the qualifying courses are 10000-20000).
+{rank=same; placement; m10054; m10273;}
+{rank=same; m10524; m10283;}
+{rank=same; m20524; m20123; c20803; programming;}
+{rank=same; m30053; m30103; m30123; m30224; m30524; m30603; m30613; m30623; m30803; m30853;}
+{rank=same; m40103; m40223; m40313; m40603; m40663; m40853; m40883;}
+{rank=sink; m50073; m50253; m50323; m50403; m50503; m50613; m50703;}
+
+// Prerequisite arrows, grouped by source.
+placement -> m10524 [style=dashed];
+placement -> m10283 [style=dashed];
+placement -> m20123 [style=dashed];
+m10054 -> m10524 [style=dashed];
+m10054 -> m10283 [style=dashed];
+m10054 -> m20123 [style=dashed];
+m10273 -> m10283 [style=dashed];
+m10273 -> m20123 [style=dashed];
+m10283 -> m20123 [style=dashed];
+m10524 -> m20123 [style=dashed];
+m10524 -> m20524;
+m10524 -> m30224;
+{ // Calculus II
+  m20524 -> m30224 [style=dashed];
+  m20524 -> m30053;
+  m20524 -> m30524;
+  m20524 -> m30603;
+  m20524 -> m30613;
+  m20524 -> m30803;
+  m20524 -> m30853;
+  m20524 -> m40663;
+  m20524 -> m50073;
+}
+m20123 -> m30224 [style=dashed];
+m20123 -> m30053;
+m20123 -> m30103;
+m20123 -> m30123;
+m20123 -> m50703;
+c20803 -> m30103;
+programming -> m40223;
+programming -> m40663;
+programming -> m40853;
+programming -> m40883;
+{ // Linear Algebra
+  m30224 -> m40103;
+  m30224 -> m40223;
+  m30224 -> m40663;
+  m30224 -> m40853;
+  m30224 -> m40883;
+  m30224 -> m50253;
+  m30224 -> m50323;
+  m30224 -> m50703;
+}
+{ // Calculus III
+  m30524 -> m40313;
+  m30524 -> m40603;
+  m30524 -> m50323;
+  m30524 -> m50403;
+  m30524 -> m50613;
+}
+m30613 -> m50613;
+{ // Introduction to Mathematical Proof
+  m30053 -> m40313;
+  m30053 -> m50253;
+  m30053 -> m50503;
+}
+m30803 -> m40603;
+m30853 -> m40853;
+m30853 -> m40883;
+m30603 -> m30623;
+}

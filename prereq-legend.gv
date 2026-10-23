@@ -1,0 +1,18 @@
+// Legend for prereq-graph.gv; overlaid on the chart by prereq-chart.tex.
+// The outer cluster draws the frame, in the same gray as the legend text.
+digraph L {
+graph [fontname="DejaVu Sans", rankdir=LR, splines=ortho, ranksep=1, nodesep=0.25];
+node [shape=box, fontname="DejaVu Sans", style=filled, color="#e6e6e6", fontcolor="#222222",
+      fixedsize=true, width=0.5, height=0.36, fontsize=12];
+edge [arrowsize=.5, color="#a3a3a3", penwidth=1];
+subgraph cluster_legend {
+  color="#555555"; penwidth=1; margin=14;
+  labeljust="l"; labelloc="b"; fontsize=11; fontcolor="#555555";
+  label=<A programming course is one of<BR ALIGN="LEFT"/>COSC 10403, COSC 10503, COSC 10603,<BR ALIGN="LEFT"/>ENGR 10573, PHYS 20323.<BR ALIGN="LEFT"/><BR ALIGN="LEFT"/>Course boxes link to their catalog entries.<BR ALIGN="LEFT"/>>;
+  // inside the frame, dot draws these in declaration order (A -> B on top)
+  subgraph cluster_a { peripheries=0; labelloc="b"; fontsize=11; fontcolor="#555555"; label="A is required for B";
+    A -> B; }
+  subgraph cluster_x { peripheries=0; labelloc="b"; fontsize=11; fontcolor="#555555"; label="One of X or Y is required for Z";
+    X -> Z [style=dashed]; Y -> Z [style=dashed]; }
+}
+}
