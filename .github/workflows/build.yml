@@ -1,0 +1,32 @@
+# Builds prereq-chart.pdf for every push and pull request; the PDF is on the run's
+# summary page. A push to main also publishes it as the latest release, at
+# releases/latest/download/prereq-chart.pdf.
+name: Build chart
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-24.04  # same Graphviz (2.42.2) as the WSL build, so the same layout
+    steps:
+      - uses: actions/checkout@v7
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends graphviz poppler-utils fonts-dejavu-core texlive-latex-extra
+      - run: ./build.sh
+      - uses: actions/upload-artifact@v7
+        with:
+          path: prereq-chart.pdf
+          archive: false
+      - name: Publish
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          day=$(date +%F)
+          gh release create "chart-$day-${GITHUB_SHA::7}" prereq-chart.pdf --latest \
+            --title "Prerequisite chart, $day" --notes "Built from ${GITHUB_SHA::7}."

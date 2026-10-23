@@ -1,0 +1,12 @@
+# Checks the catalog links on the 1st of each month, or on demand from the Actions tab.
+name: Check links
+on:
+  schedule:
+    - cron: "0 12 1 * *"
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - run: python3 -I check-links.py

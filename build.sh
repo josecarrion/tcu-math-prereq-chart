@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Builds prereq-chart.pdf; intermediate files go in build/.
-# Run from WSL: dot and poppler are the WSL ones, pdflatex is the Windows TeX Live.
+# Needs Graphviz, poppler, python3, and pdflatex. On WSL with no Linux pdflatex,
+# it uses the Windows TeX Live.
 set -e
 cd "$(dirname "$0")"
-PDFLATEX=/mnt/c/texlive/2025/bin/windows/pdflatex.exe
+PDFLATEX=$(command -v pdflatex || echo /mnt/c/texlive/2025/bin/windows/pdflatex.exe)
 mkdir -p build
 dot -Tpdf  prereq-graph.gv  -o build/prereq-graph.pdf
 dot -Tjson prereq-graph.gv  -o build/prereq-graph.json

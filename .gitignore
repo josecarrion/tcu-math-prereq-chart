@@ -1,2 +1,6 @@
 build/
 Archive/2021 originals/
+prereq-chart.pdf
+*.aux
+*.log
+*.out
